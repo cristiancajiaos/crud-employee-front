@@ -1,0 +1,86 @@
+<section class="layout">
+  <h2>
+    <fa-icon [icon]="faUserTie" [fixedWidth]="true"></fa-icon>
+    CRUD Employee
+  </h2>
+
+  <div class="row">
+    <div class="col-12 col-lg-6">
+      <button type="button" class="btn btn-primary" (click)="openToastr()">
+        Open Toastr
+      </button>
+    </div>
+    <div class="col-12 col-lg-6">
+      <button type="button" class="btn btn-primary" (click)="openModal(deleteEmployee)">
+        Open Modal
+      </button>
+    </div>
+  </div>
+
+  <hr/>
+
+  <section class="new-employee-controls">
+    <button class="btn btn-primary mb-3">
+      <fa-layers [fixedWidth]="true">
+        <fa-icon [icon]="faUserTie"></fa-icon>
+        <fa-icon [icon]="faAdd" class="text-body" transform="shrink-4 down-6 right-6"></fa-icon>
+      </fa-layers>
+      Añadir nuevo empleado
+    </button>
+  </section>
+
+  <section class="new-employee-table">
+    <div class="table-responsive">
+      <table class="table table-bordered">
+        <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre completo</th>
+          <th>Nombre de usuario</th>
+          <th>Acciones sobre el empleado</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>ID</td>
+          <td>fullName</td>
+          <td>userName</td>
+          <td class="text-center">
+            <div class="btn-group" role="group" aria-label="Basic example">
+              <button type="button" class="btn btn-outline-secondary"
+                      ngbTooltip="Editar empleado">
+                <fa-icon [icon]="faPencil" [fixedWidth]="true"></fa-icon>
+              </button>
+              <button type="button" class="btn btn-outline-danger"
+                      ngbTooltip="Eliminar empleado">
+                <fa-icon [icon]="faTimes" [fixedWidth]="true"></fa-icon>
+              </button>
+            </div>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</section>
+
+<ng-template #deleteEmployee let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">
+      Eliminar empleado
+    </h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('')">
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>Este cambio es irreversible. ¿Está seguro de que desea eliminar a este empleado?</p>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-success" (click)="modal.close('')">
+      <fa-icon [icon]="faCheck"></fa-icon> Si
+    </button>
+    <button class="btn btn-danger" (click)="modal.dismiss('')">
+      <fa-icon [icon]="faTimes"></fa-icon> No
+    </button>
+  </div>
+</ng-template>
