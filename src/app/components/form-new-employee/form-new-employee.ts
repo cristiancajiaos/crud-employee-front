@@ -3,6 +3,9 @@ import { faUsers, faUserTie, faCheck, faTimes, faPencil, faAdd } from '@fortawes
 import {IconDefinition} from '@fortawesome/angular-fontawesome';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {Employee} from '../../classes/employee';
+import {EmployeeService} from '../../services/employee-service';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-form-new-employee',
@@ -24,6 +27,8 @@ export class FormNewEmployee implements OnInit {
   constructor(
     private modal: NgbActiveModal,
     private fb: FormBuilder,
+    private employeeService: EmployeeService,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit() {
@@ -36,6 +41,22 @@ export class FormNewEmployee implements OnInit {
   }
 
   public saveNewEmployee(): void {
+    let newEmployee = new Employee();
+
+    newEmployee.fullName = this.newEmployeeForm.value['fullName'];
+    newEmployee.username = this.newEmployeeForm.value['username'];
+    newEmployee.email = this.newEmployeeForm.value['email'];
+    newEmployee.password = this.newEmployeeForm.value['password'];
+
+    this.employeeService.createEmployee(newEmployee).then((employee) => {
+      this.toastr.success("Nuevo empleado creado exitosamente");
+      this.closeModal();
+    }).catch((reject) => {
+      this.toastr.error("Hubo un error al crear el empleado");
+    });
+  }
+
+  public closeModal(): void {
     this.modal.close("");
   }
 

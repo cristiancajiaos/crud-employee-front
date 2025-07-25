@@ -81,7 +81,7 @@ export class Layout implements OnInit {
       backdrop: 'static',
       centered: true
     }).result.then((resolve) => {
-      this.toastr.success("Cerrado modal de nuevo empleado");
+      this.getEmployees();
     }).catch((reject) => {
       this.toastr.error("Dismiss modal de nuevo empleado")
     });

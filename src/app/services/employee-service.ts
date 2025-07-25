@@ -22,6 +22,18 @@ export class EmployeeService {
     return await lastValueFrom(this.http.get<Employee>(`${this.baseUrl}/${employeeId}`));
   }
 
+  public async createEmployee(employee: Employee): Promise<Employee> {
+    return await lastValueFrom(this.http.post<Employee>(
+      `${this.baseUrl}`,
+      employee,
+      {
+        headers: {
+          'Content-Type':'application/json'
+        }
+      }
+    ));
+  }
+
   public async deleteEmployee(employeeId: number): Promise<Employee> {
     return await lastValueFrom(this.http.delete<Employee>(`${this.baseUrl}/${employeeId}`));
   }
