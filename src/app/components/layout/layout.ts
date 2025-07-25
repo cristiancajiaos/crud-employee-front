@@ -57,15 +57,21 @@ export class Layout implements OnInit {
     this.toastr.success("Abrir Toastr");
   }
 
-  public openTemplateModal(content: TemplateRef<any>): void {
+  public openDeleteEmployeeModal(employeeId: number, content: TemplateRef<any>): void {
     this.modal.open(content, {
       size: 'lg',
       backdrop: 'static',
       centered: true
     }).result.then((resolve) => {
-      this.toastr.success("Borrar empleado");
+      // Si
+      this.employeeService.deleteEmployee(employeeId).then((employee) => {
+        this.toastr.success("Empleado eliminado exitosamente");
+        this.getEmployees();
+      }).catch((reject) => {
+        this.toastr.error("Hubo un error al intentar eliminar el empleado");
+      });
     }).catch((reject) => {
-      this.toastr.error("No borrar empleado");
+      // No
     });
   }
 

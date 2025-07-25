@@ -44,7 +44,7 @@
                   <fa-icon [icon]="faPencil" [fixedWidth]="true"></fa-icon>
                 </button>
                 <button type="button" class="btn btn-sm btn-outline-danger"
-                        ngbTooltip="Eliminar empleado" (click)="openTemplateModal(deleteEmployee)">
+                        ngbTooltip="Eliminar empleado" (click)="openDeleteEmployeeModal(employee.id, deleteEmployee)">
                   <fa-icon [icon]="faTimes" [fixedWidth]="true"></fa-icon>
                 </button>
               </div>
