@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { faUsers, faUserTie, faCheck, faTimes, faPencil, faAdd } from '@fortawesome/free-solid-svg-icons';
 import {IconDefinition} from '@fortawesome/angular-fontawesome';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
@@ -23,7 +23,7 @@ export class FormNewEmployee implements OnInit {
 
   constructor(
     private modal: NgbActiveModal,
-    private fb: FormBuilder
+    private fb: FormBuilder,
   ) {}
 
   ngOnInit() {

@@ -1,8 +1,11 @@
-import {Component, OnInit} from '@angular/core';
-import { faUsers, faUserTie, faCheck, faTimes, faPencil, faAdd } from '@fortawesome/free-solid-svg-icons';
+import {Component, Input, OnInit} from '@angular/core';
+import { faUsers, faUserTie, faCheck, faTimes, faPencil, faAdd, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import {IconDefinition} from '@fortawesome/angular-fontawesome';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {EmployeeService} from '../../services/employee-service';
+import {Employee} from '../../classes/employee';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-form-edit-employee',
@@ -18,12 +21,20 @@ export class FormEditEmployee implements OnInit {
   public faTimes: IconDefinition = faTimes;
   public faPencil: IconDefinition = faPencil;
   public faAdd: IconDefinition = faAdd;
+  public faSpinner: IconDefinition = faSpinner;
 
   public editEmployeeForm!: FormGroup;
 
+  public loadingEmployee: boolean = false;
+  public currentEmployee!: Employee;
+
+  @Input() employeeId!: number;
+
   constructor(
     private modal: NgbActiveModal,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private employeeService: EmployeeService,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit() {
@@ -33,6 +44,25 @@ export class FormEditEmployee implements OnInit {
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required])
     })
+
+    if (this.employeeId) {
+      this.getEmployee();
+    }
+  }
+
+  public getEmployee(): void {
+    this.loadingEmployee = true;
+    this.employeeService.getEmployeeById(this.employeeId).then((employee) => {
+      this.currentEmployee = employee;
+
+      this.editEmployeeForm.controls['fullName'].setValue(this.currentEmployee.fullName);
+      this.editEmployeeForm.controls['username'].setValue(this.currentEmployee.username);
+      this.editEmployeeForm.controls['email'].setValue(this.currentEmployee.email);
+      this.editEmployeeForm.controls['password'].setValue(this.currentEmployee.password);
+    }).catch((reject) => {
+      this.toastr.error("Error al obtener los datos del empleado");
+      this.dismissModal();
+    });
   }
 
   public saveUpdatedEmployee(): void {

@@ -40,7 +40,7 @@
             <td class="text-center">
               <div class="btn-group" role="group" aria-label="Basic example">
                 <button type="button" class="btn btn-sm btn-outline-secondary"
-                        ngbTooltip="Editar empleado" (click)="openEditEmployeeForm()">
+                        ngbTooltip="Editar empleado" (click)="openEditEmployeeForm(employee.id)">
                   <fa-icon [icon]="faPencil" [fixedWidth]="true"></fa-icon>
                 </button>
                 <button type="button" class="btn btn-sm btn-outline-danger"

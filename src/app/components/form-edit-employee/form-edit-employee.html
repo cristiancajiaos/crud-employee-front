@@ -8,59 +8,67 @@
       </button>
     </div>
     <div class="modal-body">
-      <div class="row">
-        <div class="col-12 col-lg-6">
-          <div class="form-group mb-3">
-            <label for="employeeFullName">Nombre completo del empleado</label>
-            <input type="text" class="form-control"
-                   id="employeeFullName" name="employeeFullName" formControlName="fullName" />
-            <ng-container *ngIf="editEmployeeForm.controls['fullName'].invalid">
-              <ng-container *ngIf="!(editEmployeeForm.controls['fullName'].untouched) && editEmployeeForm.controls['fullName'].errors?.['required']">
-                <small class="text-danger">Se requiere este campo</small>
+      <ng-container *ngIf="!loadingEmployee">
+        <p>
+          <fa-icon [icon]="faSpinner" animation="spin"></fa-icon>
+          Cargando empleados...
+        </p>
+      </ng-container>
+      <ng-container *ngIf="loadingEmployee">
+        <div class="row">
+          <div class="col-12 col-lg-6">
+            <div class="form-group mb-3">
+              <label for="employeeFullName">Nombre completo del empleado</label>
+              <input type="text" class="form-control"
+                     id="employeeFullName" name="employeeFullName" formControlName="fullName" />
+              <ng-container *ngIf="editEmployeeForm.controls['fullName'].invalid">
+                <ng-container *ngIf="!(editEmployeeForm.controls['fullName'].untouched) && editEmployeeForm.controls['fullName'].errors?.['required']">
+                  <small class="text-danger">Se requiere este campo</small>
+                </ng-container>
               </ng-container>
-            </ng-container>
+            </div>
+          </div>
+          <div class="col-12 col-lg-6">
+            <div class="form-group mb-3">
+              <label for="employeeUsername">Nombre de usuario del empleado</label>
+              <input type="text" class="form-control"
+                     id="employeeUsername" name="employeeUsername" formControlName="username" />
+              <ng-container *ngIf="editEmployeeForm.controls['username'].invalid">
+                <ng-container *ngIf="!(editEmployeeForm.controls['username'].untouched) && editEmployeeForm.controls['username'].errors?.['required']">
+                  <small class="text-danger">Se requiere este campo</small>
+                </ng-container>
+              </ng-container>
+            </div>
+          </div>
+          <div class="col-12 col-lg-6">
+            <div class="form-group mb-3">
+              <label for="employeeEmail">Correo</label>
+              <input type="email" class="form-control"
+                     id="employeeEmail" name="employeeEmail" formControlName="email" />
+              <ng-container *ngIf="editEmployeeForm.controls['email'].invalid">
+                <ng-container *ngIf="!(editEmployeeForm.controls['email'].untouched) && editEmployeeForm.controls['email'].errors?.['required']">
+                  <small class="text-danger">Se requiere este campo</small>
+                </ng-container>
+                <ng-container *ngIf="!(editEmployeeForm.controls['email'].untouched) && editEmployeeForm.controls['email'].errors?.['email']">
+                  <small class="text-danger">El formato de email ingresado no es correcto</small>
+                </ng-container>
+              </ng-container>
+            </div>
+          </div>
+          <div class="col-12 col-lg-6">
+            <div class="form-group mb-3">
+              <label for="employeePassword">Contraseña</label>
+              <input type="password" class="form-control"
+                     id="employeePassword" name="employeePassword" formControlName="password"/>
+              <ng-container *ngIf="editEmployeeForm.controls['password'].invalid">
+                <ng-container *ngIf="!(editEmployeeForm.controls['password'].untouched) && editEmployeeForm.controls['password'].errors?.['required']">
+                  <small class="text-danger">Se requiere este campo</small>
+                </ng-container>
+              </ng-container>
+            </div>
           </div>
         </div>
-        <div class="col-12 col-lg-6">
-          <div class="form-group mb-3">
-            <label for="employeeUsername">Nombre de usuario del empleado</label>
-            <input type="text" class="form-control"
-                   id="employeeUsername" name="employeeUsername" formControlName="username" />
-            <ng-container *ngIf="editEmployeeForm.controls['username'].invalid">
-              <ng-container *ngIf="!(editEmployeeForm.controls['username'].untouched) && editEmployeeForm.controls['username'].errors?.['required']">
-                <small class="text-danger">Se requiere este campo</small>
-              </ng-container>
-            </ng-container>
-          </div>
-        </div>
-        <div class="col-12 col-lg-6">
-          <div class="form-group mb-3">
-            <label for="employeeEmail">Correo</label>
-            <input type="email" class="form-control"
-                   id="employeeEmail" name="employeeEmail" formControlName="email" />
-            <ng-container *ngIf="editEmployeeForm.controls['email'].invalid">
-              <ng-container *ngIf="!(editEmployeeForm.controls['email'].untouched) && editEmployeeForm.controls['email'].errors?.['required']">
-                <small class="text-danger">Se requiere este campo</small>
-              </ng-container>
-              <ng-container *ngIf="!(editEmployeeForm.controls['email'].untouched) && editEmployeeForm.controls['email'].errors?.['email']">
-                <small class="text-danger">El formato de email ingresado no es correcto</small>
-              </ng-container>
-            </ng-container>
-          </div>
-        </div>
-        <div class="col-12 col-lg-6">
-          <div class="form-group mb-3">
-            <label for="employeePassword">Contraseña</label>
-            <input type="password" class="form-control"
-                   id="employeePassword" name="employeePassword" formControlName="password"/>
-            <ng-container *ngIf="editEmployeeForm.controls['password'].invalid">
-              <ng-container *ngIf="!(editEmployeeForm.controls['password'].untouched) && editEmployeeForm.controls['password'].errors?.['required']">
-                <small class="text-danger">Se requiere este campo</small>
-              </ng-container>
-            </ng-container>
-          </div>
-        </div>
-      </div>
+      </ng-container>
     </div>
     <div class="modal-footer">
       <button type="submit" class="btn btn-success" [disabled]="editEmployeeForm.invalid">

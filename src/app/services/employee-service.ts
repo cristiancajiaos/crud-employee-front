@@ -18,4 +18,8 @@ export class EmployeeService {
     return await lastValueFrom(this.http.get<Employee[]>(`${this.baseUrl}`));
   }
 
+  public async getEmployeeById(employeeId: number): Promise<Employee> {
+    return await lastValueFrom(this.http.get<Employee>(`${this.baseUrl}/${employeeId}`));
+  }
+
 }
