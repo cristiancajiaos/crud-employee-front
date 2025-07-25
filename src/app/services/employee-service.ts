@@ -23,15 +23,31 @@ export class EmployeeService {
   }
 
   public async createEmployee(employee: Employee): Promise<Employee> {
-    return await lastValueFrom(this.http.post<Employee>(
-      `${this.baseUrl}`,
-      employee,
-      {
-        headers: {
-          'Content-Type':'application/json'
+    return await lastValueFrom(
+      this.http.post<Employee>(
+        `${this.baseUrl}`,
+        employee,
+        {
+          headers: {
+            'Content-Type':'application/json'
+          }
         }
-      }
-    ));
+      )
+    );
+  }
+
+  public async updateEmployee(employeeId: number, updatedEmployee: Employee): Promise<Employee> {
+    return await lastValueFrom(
+      this.http.put<Employee>(
+      `${this.baseUrl}/${employeeId}`,
+        updatedEmployee,
+        {
+          headers: {
+            'Content-Type':'application/json'
+          }
+        }
+      )
+    );
   }
 
   public async deleteEmployee(employeeId: number): Promise<Employee> {

@@ -66,7 +66,23 @@ export class FormEditEmployee implements OnInit {
   }
 
   public saveUpdatedEmployee(): void {
-    this.modal.close("");
+    let updatedEmployee = new Employee();
+
+    updatedEmployee.fullName = this.editEmployeeForm.value['fullName'];
+    updatedEmployee.username = this.editEmployeeForm.value['username'];
+    updatedEmployee.email = this.editEmployeeForm.value['email'];
+    updatedEmployee.password = this.editEmployeeForm.value['password'];
+
+    this.employeeService.updateEmployee(this.employeeId, updatedEmployee).then((employee) => {
+      this.toastr.success("Se ha editado el empleado exitosamente");
+      this.closeModal();
+    }).catch((reject) => {
+      this.toastr.error("Hubo un error al editar el empleado");
+    });
+  }
+
+  public closeModal(): void {
+    this.modal.close('');
   }
 
   public dismissModal(): void {

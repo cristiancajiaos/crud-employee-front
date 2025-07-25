@@ -46,6 +46,7 @@ export class Layout implements OnInit {
     this.employees = [];
     this.employeeService.getEmployees().then((employees) => {
       this.employees = employees;
+      this.sortEmployeesById();
       this.loadingEmployees = false;
     }).catch((reject) => {
       this.toastr.error("Hubo un error al obtener los empleados");
@@ -81,9 +82,10 @@ export class Layout implements OnInit {
       backdrop: 'static',
       centered: true
     }).result.then((resolve) => {
+      // Crear nuevo empleado
       this.getEmployees();
     }).catch((reject) => {
-      this.toastr.error("Dismiss modal de nuevo empleado")
+      // Cancelar
     });
   }
 
@@ -96,8 +98,16 @@ export class Layout implements OnInit {
     modalEdit.componentInstance.employeeId = employeeId;
 
     modalEdit.result.then((resolve) => {
-      this.toastr.success("Cerrado modal de editar empleado");
+      // Editar empleado
+      this.getEmployees();
     }).catch((reject) => {
+      // Cancelar
+    });
+  }
+
+  public sortEmployeesById(): void {
+    this.employees.sort((a, b) => {
+      return a.id - b.id;
     });
   }
 
