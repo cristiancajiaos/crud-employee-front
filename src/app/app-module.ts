@@ -11,6 +11,7 @@ import {ToastrModule} from 'ngx-toastr';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { FormNewEmployee } from './components/form-new-employee/form-new-employee';
 import { FormEditEmployee } from './components/form-edit-employee/form-edit-employee';
+import {provideHttpClient, withFetch} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { FormEditEmployee } from './components/form-edit-employee/form-edit-empl
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),
-    provideClientHydration(withEventReplay())
+    provideClientHydration(withEventReplay()),
+    provideHttpClient(withFetch())
   ],
   bootstrap: [App]
 })

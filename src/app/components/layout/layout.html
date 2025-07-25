@@ -4,21 +4,6 @@
     CRUD Employee
   </h2>
 
-  <div class="row">
-    <div class="col-12 col-lg-6">
-      <button type="button" class="btn btn-primary" (click)="openToastr()">
-        Open Toastr
-      </button>
-    </div>
-    <div class="col-12 col-lg-6">
-      <button type="button" class="btn btn-primary" (click)="openModal(deleteEmployee)">
-        Open Modal
-      </button>
-    </div>
-  </div>
-
-  <hr/>
-
   <section class="new-employee-controls">
     <button class="btn btn-primary mb-3" (click)="openNewEmployeeForm()">
       <fa-layers [fixedWidth]="true">
@@ -30,37 +15,46 @@
   </section>
 
   <section class="new-employee-table">
-    <div class="table-responsive">
-      <table class="table table-bordered">
-        <thead>
-        <tr>
-          <th>ID</th>
-          <th>Nombre completo</th>
-          <th>Nombre de usuario</th>
-          <th>Acciones sobre el empleado</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-          <td>ID</td>
-          <td>fullName</td>
-          <td>userName</td>
-          <td class="text-center">
-            <div class="btn-group" role="group" aria-label="Basic example">
-              <button type="button" class="btn btn-sm btn-outline-secondary"
-                      ngbTooltip="Editar empleado" (click)="openEditEmployeeForm()">
-                <fa-icon [icon]="faPencil" [fixedWidth]="true"></fa-icon>
-              </button>
-              <button type="button" class="btn btn-sm btn-outline-danger"
-                      ngbTooltip="Eliminar empleado">
-                <fa-icon [icon]="faTimes" [fixedWidth]="true"></fa-icon>
-              </button>
-            </div>
-          </td>
-        </tr>
-        </tbody>
-      </table>
-    </div>
+    <ng-container *ngIf="loadingEmployees">
+      <p>
+        <fa-icon [icon]="faSpinner" animation="spin"></fa-icon>
+        Cargando empleados...
+      </p>
+    </ng-container>
+    <ng-container *ngIf="!loadingEmployees">
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nombre completo</th>
+            <th>Nombre de usuario</th>
+            <th>Acciones sobre el empleado</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let employee of employees">
+            <td>{{employee.id}}</td>
+            <td>{{employee.fullName}}</td>
+            <td>{{employee.username}}</td>
+            <td class="text-center">
+              <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="button" class="btn btn-sm btn-outline-secondary"
+                        ngbTooltip="Editar empleado" (click)="openEditEmployeeForm()">
+                  <fa-icon [icon]="faPencil" [fixedWidth]="true"></fa-icon>
+                </button>
+                <button type="button" class="btn btn-sm btn-outline-danger"
+                        ngbTooltip="Eliminar empleado" (click)="openTemplateModal(deleteEmployee)">
+                  <fa-icon [icon]="faTimes" [fixedWidth]="true"></fa-icon>
+                </button>
+              </div>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </ng-container>
+
   </section>
 </section>
 
