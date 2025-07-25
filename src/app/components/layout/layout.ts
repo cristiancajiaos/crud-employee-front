@@ -3,6 +3,8 @@ import {ToastrService} from 'ngx-toastr';
 import { faUsers, faUserTie, faCheck, faTimes, faPencil, faAdd } from '@fortawesome/free-solid-svg-icons';
 import {IconDefinition} from '@fortawesome/angular-fontawesome';
 import {NgbModal, NgbTooltipConfig} from '@ng-bootstrap/ng-bootstrap';
+import {FormNewEmployee} from '../form-new-employee/form-new-employee';
+import {FormEditEmployee} from '../form-edit-employee/form-edit-employee';
 
 @Component({
   selector: 'app-layout',
@@ -47,4 +49,28 @@ export class Layout implements OnInit {
     });
   }
 
+  public openNewEmployeeForm(): void {
+    this.modal.open(FormNewEmployee, {
+      size: 'lg',
+      centered: true
+    }).result.then((resolve) => {
+      this.toastr.success("Cerrado modal de nuevo empleado");
+    }).catch((reject) => {
+      this.toastr.error("Dismiss modal de nuevo empleado")
+    });
+  }
+
+  public openEditEmployeeForm(): void {
+    this.modal.open(FormEditEmployee, {
+      size: 'lg',
+      centered: true
+    }).result.then((resolve) => {
+      this.toastr.success("Cerrado modal de editar empleado");
+    }).catch((reject) => {
+      this.toastr.error("Dismiss modal de editar empleado")
+    });
+  }
+
 }
+
+

@@ -20,7 +20,7 @@
   <hr/>
 
   <section class="new-employee-controls">
-    <button class="btn btn-primary mb-3">
+    <button class="btn btn-primary mb-3" (click)="openNewEmployeeForm()">
       <fa-layers [fixedWidth]="true">
         <fa-icon [icon]="faUserTie"></fa-icon>
         <fa-icon [icon]="faAdd" class="text-body" transform="shrink-4 down-6 right-6"></fa-icon>
@@ -48,7 +48,7 @@
           <td class="text-center">
             <div class="btn-group" role="group" aria-label="Basic example">
               <button type="button" class="btn btn-outline-secondary"
-                      ngbTooltip="Editar empleado">
+                      ngbTooltip="Editar empleado" (click)="openEditEmployeeForm()">
                 <fa-icon [icon]="faPencil" [fixedWidth]="true"></fa-icon>
               </button>
               <button type="button" class="btn btn-outline-danger"
@@ -76,10 +76,10 @@
     <p>Este cambio es irreversible. ¿Está seguro de que desea eliminar a este empleado?</p>
   </div>
   <div class="modal-footer">
-    <button class="btn btn-success" (click)="modal.close('')">
+    <button type="button" class="btn btn-success" (click)="modal.close('')">
       <fa-icon [icon]="faCheck"></fa-icon> Si
     </button>
-    <button class="btn btn-danger" (click)="modal.dismiss('')">
+    <button type="button" class="btn btn-danger" (click)="modal.dismiss('')">
       <fa-icon [icon]="faTimes"></fa-icon> No
     </button>
   </div>
