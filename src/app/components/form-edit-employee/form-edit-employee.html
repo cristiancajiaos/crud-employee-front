@@ -8,14 +8,47 @@
       </button>
     </div>
     <div class="modal-body">
-      <p>Form Edit User</p>
+      <div class="row">
+        <div class="col-12 col-lg-6">
+          <div class="form-group">
+            <label for="employeeFullName">Nombre completo del empleado</label>
+            <input type="text" class="form-control"
+                   id="employeeFullName" name="employeeFullName" />
+          </div>
+        </div>
+        <div class="col-12 col-lg-6">
+          <div class="form-group">
+            <label for="employeeUsername">Nombre de usuario del empleado</label>
+            <input type="text" class="form-control"
+                   id="employeeUsername" name="employeeUsername" />
+          </div>
+        </div>
+        <div class="col-12 col-lg-6">
+          <div class="form-group">
+            <label for="employeeEmail">Correo</label>
+            <input type="text" class="form-control"
+                   id="employeeEmail" name="employeeEmail" />
+          </div>
+        </div>
+        <div class="col-12 col-lg-6">
+          <div class="form-group">
+            <label for="employeePassword">Contraseña</label>
+            <input type="password" class="form-control"
+                   id="employeePassword" name="employeePassword" />
+          </div>
+        </div>
+      </div>
     </div>
     <div class="modal-footer">
       <button type="submit" class="btn btn-success">
-        <fa-icon [icon]="faCheck"></fa-icon> Si
+        <fa-layers [fixedWidth]="true">
+          <fa-icon [icon]="faUserTie"></fa-icon>
+          <fa-icon [icon]="faPencil" class="text-body" transform="shrink-4 down-6 right-6"></fa-icon>
+        </fa-layers>
+        Editar empleado
       </button>
       <button type="button" class="btn btn-danger" (click)="dismissModal()">
-        <fa-icon [icon]="faTimes"></fa-icon> No
+        <fa-icon [icon]="faTimes"></fa-icon> Cancelar
       </button>
     </div>
   </form>
