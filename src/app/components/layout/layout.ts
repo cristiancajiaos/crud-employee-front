@@ -52,6 +52,7 @@ export class Layout implements OnInit {
   public openNewEmployeeForm(): void {
     this.modal.open(FormNewEmployee, {
       size: 'lg',
+      backdrop: 'static',
       centered: true
     }).result.then((resolve) => {
       this.toastr.success("Cerrado modal de nuevo empleado");
@@ -63,6 +64,7 @@ export class Layout implements OnInit {
   public openEditEmployeeForm(): void {
     this.modal.open(FormEditEmployee, {
       size: 'lg',
+      backdrop: 'static',
       centered: true
     }).result.then((resolve) => {
       this.toastr.success("Cerrado modal de editar empleado");

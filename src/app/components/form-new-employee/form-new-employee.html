@@ -1,5 +1,5 @@
 <section class="form-new-user">
-  <form (ngSubmit)="saveNewEmployee()">
+  <form [formGroup]="newEmployeeForm" (ngSubmit)="saveNewEmployee()">
     <div class="modal-header">
       <h4 class="modal-title" id="modal-basic-title">
         Nuevo empleado
@@ -10,37 +10,60 @@
     <div class="modal-body">
       <div class="row">
         <div class="col-12 col-lg-6">
-          <div class="form-group">
+          <div class="form-group mb-3">
             <label for="employeeFullName">Nombre completo del empleado</label>
             <input type="text" class="form-control"
-                   id="employeeFullName" name="employeeFullName" />
+                   id="employeeFullName" name="employeeFullName" formControlName="fullName" />
+            <ng-container *ngIf="newEmployeeForm.controls['fullName'].invalid">
+              <ng-container *ngIf="!(newEmployeeForm.controls['fullName'].untouched) && newEmployeeForm.controls['fullName'].errors?.['required']">
+                <small class="text-danger">Se requiere este campo</small>
+              </ng-container>
+            </ng-container>
           </div>
         </div>
         <div class="col-12 col-lg-6">
-          <div class="form-group">
+          <div class="form-group mb-3">
             <label for="employeeUsername">Nombre de usuario del empleado</label>
             <input type="text" class="form-control"
-                   id="employeeUsername" name="employeeUsername" />
+                   id="employeeUsername" name="employeeUsername" formControlName="username" />
+            <ng-container *ngIf="newEmployeeForm.controls['username'].invalid">
+              <ng-container *ngIf="!(newEmployeeForm.controls['username'].untouched) && newEmployeeForm.controls['username'].errors?.['required']">
+                <small class="text-danger">Se requiere este campo</small>
+              </ng-container>
+            </ng-container>
           </div>
         </div>
         <div class="col-12 col-lg-6">
-          <div class="form-group">
+          <div class="form-group mb-3">
             <label for="employeeEmail">Correo</label>
-            <input type="text" class="form-control"
-                   id="employeeEmail" name="employeeEmail" />
+            <input type="email" class="form-control"
+                   id="employeeEmail" name="employeeEmail" formControlName="email" />
+            <ng-container *ngIf="newEmployeeForm.controls['email'].invalid">
+              <ng-container *ngIf="!(newEmployeeForm.controls['email'].untouched) && newEmployeeForm.controls['email'].errors?.['required']">
+                <small class="text-danger">Se requiere este campo</small>
+              </ng-container>
+              <ng-container *ngIf="!(newEmployeeForm.controls['email'].untouched) && newEmployeeForm.controls['email'].errors?.['email']">
+                <small class="text-danger">El formato de email ingresado no es correcto</small>
+              </ng-container>
+            </ng-container>
           </div>
         </div>
         <div class="col-12 col-lg-6">
-          <div class="form-group">
+          <div class="form-group mb-3">
             <label for="employeePassword">Contraseña</label>
             <input type="password" class="form-control"
-                   id="employeePassword" name="employeePassword" />
+                   id="employeePassword" name="employeePassword" formControlName="password"/>
+            <ng-container *ngIf="newEmployeeForm.controls['password'].invalid">
+              <ng-container *ngIf="!(newEmployeeForm.controls['password'].untouched) && newEmployeeForm.controls['password'].errors?.['required']">
+                <small class="text-danger">Se requiere este campo</small>
+              </ng-container>
+            </ng-container>
           </div>
         </div>
       </div>
     </div>
     <div class="modal-footer">
-      <button type="submit" class="btn btn-success">
+      <button type="submit" class="btn btn-success" [disabled]="newEmployeeForm.invalid">
         <fa-layers [fixedWidth]="true">
           <fa-icon [icon]="faUserTie"></fa-icon>
           <fa-icon [icon]="faAdd" class="text-body" transform="shrink-4 down-6 right-6"></fa-icon>
