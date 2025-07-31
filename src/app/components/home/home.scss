@@ -1,0 +1,19 @@
+a {
+  text-decoration: none;
+  color: black;
+  font-size: 2rem;
+
+  .employees-list {
+    height: 200px;
+    border: 1px solid black;
+    border-radius: 15px;
+  }
+
+  &:hover {
+    .employees-list {
+      color: white;
+      background-color: black;
+      box-shadow: 5px 5px 5px black;
+    }
+  }
+}

@@ -1,0 +1,13 @@
+<h3>Página no encontrada</h3>
+<p>No se encuentra la página que estás solicitando</p>
+
+<button type="button" class="btn btn-danger me-2" (click)="goBack()">
+  <fa-icon [icon]="faArrowLeft"></fa-icon> Volver a la página anterior
+</button>
+<button type="button" class="btn btn-primary" (click)="goToEmployeesList()">
+  <fa-layers>
+    <fa-icon [icon]="faUserTie"></fa-icon>
+    <fa-icon [icon]="faList" class="text-body" transform="shrink-4 down-6 right-6"></fa-icon>
+  </fa-layers>
+  Ir a la lista de empleados
+</button>
