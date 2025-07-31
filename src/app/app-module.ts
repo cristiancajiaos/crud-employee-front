@@ -13,10 +13,10 @@ import { FormNewEmployee } from './components/form-new-employee/form-new-employe
 import { FormEditEmployee } from './components/form-edit-employee/form-edit-employee';
 import {provideHttpClient, withFetch} from '@angular/common/http';
 import {RouterModule} from '@angular/router';
-import { Employee } from './components/employee/employee';
 import { EmployeesList } from './components/employees-list/employees-list';
 import { NotFound } from './components/not-found/not-found';
 import { Home } from './components/home/home';
+import { EmployeeDetail } from './components/employee-detail/employee-detail';
 
 @NgModule({
   declarations: [
@@ -24,10 +24,10 @@ import { Home } from './components/home/home';
     Layout,
     FormNewEmployee,
     FormEditEmployee,
-    Employee,
+    EmployeeDetail,
     EmployeesList,
     NotFound,
-    Home
+    Home,
   ],
   imports: [
     BrowserModule,

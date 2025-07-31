@@ -1,10 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {Layout} from './components/layout/layout';
 import {EmployeesList} from './components/employees-list/employees-list';
-import {Employee} from './components/employee/employee';
 import {NotFound} from './components/not-found/not-found';
 import {Home} from './components/home/home';
+import {EmployeeDetail} from './components/employee-detail/employee-detail';
 
 const routes: Routes = [
   {
@@ -16,9 +15,10 @@ const routes: Routes = [
     path: 'employees-list',
     component: EmployeesList,
     pathMatch: 'full'
-  }, {
+  },
+  {
     path: 'employee/:id',
-    component: Employee,
+    component: EmployeeDetail,
     pathMatch: 'full'
   },
   {
