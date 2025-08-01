@@ -1,12 +1,12 @@
 import {Component, OnInit, TemplateRef} from '@angular/core';
 import {ToastrService} from 'ngx-toastr';
-import { faUsers, faUserTie, faCheck, faTimes, faPencil, faAdd, faSpinner, faEye } from '@fortawesome/free-solid-svg-icons';
+import { faUsers, faUserTie, faCheck, faTimes, faPencil, faAdd, faSpinner, faEye, faList } from '@fortawesome/free-solid-svg-icons';
 import {IconDefinition} from '@fortawesome/angular-fontawesome';
 import {NgbModal, NgbModalRef, NgbTooltipConfig} from '@ng-bootstrap/ng-bootstrap';
 import {FormNewEmployee} from '../form-new-employee/form-new-employee';
 import {FormEditEmployee} from '../form-edit-employee/form-edit-employee';
-import {Employee} from '../../classes/employee';
-import {EmployeeService} from '../../services/employee-service';
+import {Employee} from '../../../classes/employee';
+import {EmployeeService} from '../../../services/employee-service';
 import {Router} from '@angular/router';
 
 @Component({
@@ -25,6 +25,7 @@ export class EmployeesList implements OnInit  {
   public faAdd: IconDefinition = faAdd;
   public faSpinner: IconDefinition = faSpinner;
   public faEye: IconDefinition = faEye;
+  public faList: IconDefinition = faList;
 
   public loadingEmployees: boolean = false;
   public employees: Employee[] = [];

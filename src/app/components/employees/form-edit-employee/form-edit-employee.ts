@@ -3,8 +3,8 @@ import { faUsers, faUserTie, faCheck, faTimes, faPencil, faAdd, faSpinner } from
 import {IconDefinition} from '@fortawesome/angular-fontawesome';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {EmployeeService} from '../../services/employee-service';
-import {Employee} from '../../classes/employee';
+import {EmployeeService} from '../../../services/employee-service';
+import {Employee} from '../../../classes/employee';
 import {ToastrService} from 'ngx-toastr';
 
 @Component({

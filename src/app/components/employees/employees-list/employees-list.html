@@ -1,0 +1,89 @@
+<section class="employees-list">
+  <header>
+    <h2 class="mb-2">
+      <fa-layers [fixedWidth]="true">
+        <fa-icon [icon]="faUserTie"></fa-icon>
+        <fa-icon [icon]="faList" class="text-body" transform="shrink-4 down-6 right-6"></fa-icon>
+      </fa-layers>
+      Empleados
+    </h2>
+  </header>
+  <section class="employees-list-body">
+    <section class="new-employee-controls">
+      <button class="btn btn-primary mb-3" (click)="openNewEmployeeForm()">
+        <fa-layers [fixedWidth]="true">
+          <fa-icon [icon]="faUserTie"></fa-icon>
+          <fa-icon [icon]="faAdd" class="text-body" transform="shrink-4 down-6 right-6"></fa-icon>
+        </fa-layers>
+        Añadir nuevo empleado
+      </button>
+    </section>
+    <section class="new-employee-table">
+      <ng-container *ngIf="loadingEmployees">
+        <p>
+          <fa-icon [icon]="faSpinner" animation="spin"></fa-icon>
+          Cargando empleados...
+        </p>
+      </ng-container>
+      <ng-container *ngIf="!loadingEmployees">
+        <div class="table-responsive">
+          <table class="table table-bordered">
+            <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nombre completo</th>
+              <th>Nombre de usuario</th>
+              <th>Acciones sobre el empleado</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let employee of employees">
+              <td>{{employee.id}}</td>
+              <td>{{employee.fullName}}</td>
+              <td>{{employee.username}}</td>
+              <td class="text-center">
+                <div class="btn-group" role="group" aria-label="Basic example">
+                  <button type="button" class="btn btn-sm btn-outline-info"
+                          ngbTooltip="Ver información del empleado" (click)="openSeeEmployeeInfo(employee.id)">
+                    <fa-icon [icon]="faEye" [fixedWidth]="true"></fa-icon>
+                  </button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary"
+                          ngbTooltip="Editar empleado" (click)="openEditEmployeeForm(employee.id)">
+                    <fa-icon [icon]="faPencil" [fixedWidth]="true"></fa-icon>
+                  </button>
+                  <button type="button" class="btn btn-sm btn-outline-danger"
+                          ngbTooltip="Eliminar empleado" (click)="openDeleteEmployeeModal(employee.id, deleteEmployee)">
+                    <fa-icon [icon]="faTimes" [fixedWidth]="true"></fa-icon>
+                  </button>
+                </div>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </ng-container>
+
+    </section>
+  </section>
+</section>
+
+<ng-template #deleteEmployee let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">
+      Eliminar empleado
+    </h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('')">
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>Este cambio es irreversible. ¿Está seguro de que desea eliminar a este empleado?</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-success" (click)="modal.close('')">
+      <fa-icon [icon]="faCheck"></fa-icon> Si
+    </button>
+    <button type="button" class="btn btn-danger" (click)="modal.dismiss('')">
+      <fa-icon [icon]="faTimes"></fa-icon> No
+    </button>
+  </div>
+</ng-template>

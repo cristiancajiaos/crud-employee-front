@@ -9,14 +9,16 @@ import { Layout } from './components/layout/layout';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ToastrModule} from 'ngx-toastr';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { FormNewEmployee } from './components/form-new-employee/form-new-employee';
-import { FormEditEmployee } from './components/form-edit-employee/form-edit-employee';
+import { FormNewEmployee } from './components/employees/form-new-employee/form-new-employee';
+import { FormEditEmployee } from './components/employees/form-edit-employee/form-edit-employee';
 import {provideHttpClient, withFetch} from '@angular/common/http';
 import {RouterModule} from '@angular/router';
-import { EmployeesList } from './components/employees-list/employees-list';
+import { EmployeesList } from './components/employees/employees-list/employees-list';
 import { NotFound } from './components/not-found/not-found';
 import { Home } from './components/home/home';
-import { EmployeeDetail } from './components/employee-detail/employee-detail';
+import { EmployeeDetail } from './components/employees/employee-detail/employee-detail';
+import { Footer } from './components/shared/footer/footer';
+import { Header } from './components/shared/header/header';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,8 @@ import { EmployeeDetail } from './components/employee-detail/employee-detail';
     EmployeesList,
     NotFound,
     Home,
+    Footer,
+    Header,
   ],
   imports: [
     BrowserModule,

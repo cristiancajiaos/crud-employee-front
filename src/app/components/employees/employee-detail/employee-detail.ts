@@ -1,11 +1,11 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
-import {EmployeeService} from '../../services/employee-service';
+import {EmployeeService} from '../../../services/employee-service';
 import {Location} from '@angular/common';
 import { faArrowLeft, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import {IconDefinition} from '@fortawesome/angular-fontawesome';
-import {Employee} from '../../classes/employee';
+import {Employee} from '../../../classes/employee';
 import {Subscription} from 'rxjs';
 
 @Component({

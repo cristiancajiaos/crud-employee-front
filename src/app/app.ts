@@ -1,6 +1,4 @@
 import {Component, OnInit, signal} from '@angular/core';
-import {IconDefinition} from '@fortawesome/angular-fontawesome';
-import { faUserTie } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-root',
@@ -8,13 +6,8 @@ import { faUserTie } from '@fortawesome/free-solid-svg-icons';
   standalone: false,
   styleUrl: './app.scss'
 })
-export class App implements  OnInit{
+export class App {
 
   protected readonly title = signal('crud-employee-front');
 
-  public faUserTie: IconDefinition = faUserTie;
-
-  ngOnInit(): void {
-
-  }
 }
