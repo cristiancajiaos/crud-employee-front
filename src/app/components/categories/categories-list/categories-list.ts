@@ -1,6 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import { faUsers, faUserTie, faCheck, faTimes, faPencil, faAdd, faSpinner, faEye, faList, faTags } from '@fortawesome/free-solid-svg-icons';
 import {IconDefinition} from '@fortawesome/angular-fontawesome';
+import {CategoryService} from '../../../services/category-service';
+import {Category} from '../../../classes/category';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-categories-list',
@@ -21,7 +24,35 @@ export class CategoriesList implements OnInit {
   public faList: IconDefinition = faList;
   public faTags: IconDefinition = faTags;
 
+  public loadingCategories: boolean = false;
+  public categories: Category[] = [];
+
+  constructor(
+    private categoryService: CategoryService,
+    private toastr: ToastrService
+  ) {
+  }
+
   ngOnInit(): void {
+    this.getCategories();
+  }
+
+  public getCategories(): void {
+    this.loadingCategories = true;
+    this.categoryService.getAllCategories().then((categories) => {
+      this.categories = categories;
+      this.sortCategoriesById();
+    }).catch(() => {
+      this.toastr.error("Hubo un error al obtener las categorías");
+    }).finally(() => {
+      this.loadingCategories = false;
+    });
+  }
+
+  public sortCategoriesById(): void {
+    this.categories.sort((a, b) => {
+      return a.id - b.id;
+    });
   }
 
 }

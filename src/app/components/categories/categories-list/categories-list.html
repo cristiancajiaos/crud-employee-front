@@ -19,35 +19,48 @@
       </button>
     </section>
     <section class="new-category-table">
-      <div class="table-responsive">
-        <table class="table table-bordered">
-          <thead>
-          <tr>
-            <th>ID</th>
-            <th>Nombre de la categoría</th>
-            <th>Acciones sobre la categoría</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr>
-            <td></td>
-            <td></td>
-            <td class="text-center">
-              <div class="btn-group" role="group" aria-label="Basic example">
-                <button type="button" class="btn btn-sm btn-outline-secondary"
-                        ngbTooltip="Editar categoría">
-                  <fa-icon [icon]="faPencil" [fixedWidth]="true"></fa-icon>
-                </button>
-                <button type="button" class="btn btn-sm btn-outline-danger"
-                        ngbTooltip="Eliminar categoría">
-                  <fa-icon [icon]="faTimes" [fixedWidth]="true"></fa-icon>
-                </button>
-              </div>
-            </td>
-          </tr>
-          </tbody>
-        </table>
-      </div>
+      <ng-container *ngIf="loadingCategories">
+        <p>
+          <fa-icon [icon]="faSpinner" animation="spin"></fa-icon>
+          Cargando categorías...
+        </p>
+      </ng-container>
+      <ng-container *ngIf="!loadingCategories">
+        <ng-container *ngIf="categories.length == 0">
+          <p>No hay categorías disponibles</p>
+        </ng-container>
+        <ng-container *ngIf="categories.length > 0">
+          <div class="table-responsive">
+            <table class="table table-bordered">
+              <thead>
+              <tr>
+                <th>ID</th>
+                <th>Nombre de la categoría</th>
+                <th>Acciones sobre la categoría</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let category of categories">
+                <td>{{category.id}}</td>
+                <td>{{category.name}}</td>
+                <td class="text-center">
+                  <div class="btn-group" role="group" aria-label="Basic example">
+                    <button type="button" class="btn btn-sm btn-outline-secondary"
+                            ngbTooltip="Editar categoría">
+                      <fa-icon [icon]="faPencil" [fixedWidth]="true"></fa-icon>
+                    </button>
+                    <button type="button" class="btn btn-sm btn-outline-danger"
+                            ngbTooltip="Eliminar categoría">
+                      <fa-icon [icon]="faTimes" [fixedWidth]="true"></fa-icon>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </ng-container>
+      </ng-container>
     </section>
   </section>
 </section>
