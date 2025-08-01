@@ -9,7 +9,46 @@
     </h2>
   </header>
   <section class="categories-list-body">
-    <p>categories-list works!</p>
+    <section class="new-category-controls">
+      <button class="btn btn-primary mb-3">
+        <fa-layers [fixedWidth]="true">
+          <fa-icon [icon]="faTags"></fa-icon>
+          <fa-icon [icon]="faAdd" class="text-body" transform="shrink-4 down-6 right-6"></fa-icon>
+        </fa-layers>
+        Añadir nueva categoría
+      </button>
+    </section>
+    <section class="new-category-table">
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nombre de la categoría</th>
+            <th>Acciones sobre la categoría</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td></td>
+            <td></td>
+            <td class="text-center">
+              <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="button" class="btn btn-sm btn-outline-secondary"
+                        ngbTooltip="Editar categoría">
+                  <fa-icon [icon]="faPencil" [fixedWidth]="true"></fa-icon>
+                </button>
+                <button type="button" class="btn btn-sm btn-outline-danger"
+                        ngbTooltip="Eliminar categoría">
+                  <fa-icon [icon]="faTimes" [fixedWidth]="true"></fa-icon>
+                </button>
+              </div>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
   </section>
 </section>
 
