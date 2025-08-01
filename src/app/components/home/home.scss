@@ -3,14 +3,14 @@ a {
   color: black;
   font-size: 2rem;
 
-  .employees-list {
+  .employees-list, .categories-list {
     height: 200px;
     border: 1px solid black;
     border-radius: 15px;
   }
 
   &:hover {
-    .employees-list {
+    .employees-list, .categories-list {
       color: white;
       background-color: black;
       box-shadow: 5px 5px 5px black;

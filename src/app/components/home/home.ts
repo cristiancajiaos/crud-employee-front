@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import { faUserTie, faList } from '@fortawesome/free-solid-svg-icons';
+import { faUserTie, faList, faTags } from '@fortawesome/free-solid-svg-icons';
 import {IconDefinition} from '@fortawesome/angular-fontawesome';
 
 @Component({
@@ -12,6 +12,7 @@ export class Home implements OnInit{
 
   public faUserTie: IconDefinition = faUserTie;
   public faList: IconDefinition = faList;
+  public faTags: IconDefinition = faTags;
 
   ngOnInit(): void {
   }

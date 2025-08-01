@@ -4,6 +4,7 @@ import {EmployeesList} from './components/employees/employees-list/employees-lis
 import {NotFound} from './components/not-found/not-found';
 import {Home} from './components/home/home';
 import {EmployeeDetail} from './components/employees/employee-detail/employee-detail';
+import {CategoriesList} from './components/categories/categories-list/categories-list';
 
 const routes: Routes = [
   {
@@ -19,6 +20,11 @@ const routes: Routes = [
   {
     path: 'employee/:id',
     component: EmployeeDetail,
+    pathMatch: 'full'
+  },
+  {
+    path: 'categories-list',
+    component: CategoriesList,
     pathMatch: 'full'
   },
   {

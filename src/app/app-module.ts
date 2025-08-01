@@ -19,6 +19,8 @@ import { Home } from './components/home/home';
 import { EmployeeDetail } from './components/employees/employee-detail/employee-detail';
 import { Footer } from './components/shared/footer/footer';
 import { Header } from './components/shared/header/header';
+import { CategoriesList } from './components/categories/categories-list/categories-list';
+import { Navbar } from './components/shared/navbar/navbar';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,8 @@ import { Header } from './components/shared/header/header';
     Home,
     Footer,
     Header,
+    CategoriesList,
+    Navbar,
   ],
   imports: [
     BrowserModule,
