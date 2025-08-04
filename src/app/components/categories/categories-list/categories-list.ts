@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import { faUsers, faUserTie, faCheck, faTimes, faPencil, faAdd, faSpinner, faEye, faList, faTags } from '@fortawesome/free-solid-svg-icons';
+import { faUsers, faUserTie, faCheck, faTimes, faPencil, faAdd, faSpinner, faEye, faList, faTags, faFilter } from '@fortawesome/free-solid-svg-icons';
 import {IconDefinition} from '@fortawesome/angular-fontawesome';
 import {CategoryService} from '../../../services/category-service';
 import {Category} from '../../../classes/category';
@@ -26,6 +26,7 @@ export class CategoriesList implements OnInit {
   public faEye: IconDefinition = faEye;
   public faList: IconDefinition = faList;
   public faTags: IconDefinition = faTags;
+  public faFilter: IconDefinition = faFilter;
 
   public pageNumber: number = 1;
   public pageItems: number = 10;
