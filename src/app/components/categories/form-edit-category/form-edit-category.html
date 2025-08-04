@@ -1,0 +1,33 @@
+<section class="form-edit-category">
+  <form>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">
+        Editar categoría
+      </h4>
+      <button type="button" class="btn-close" aria-label="Close" (click)="dismissModal()">
+      </button>
+    </div>
+    <div class="modal-body">
+      <p>ID: {{categoryId}}</p>
+      <p>Name: {{categoryName}}</p>
+      <hr/>
+      <div class="from-group">
+        <label for="categoryName">Nombre de la categoría</label>
+        <input type="text" class="form-control" id="categoryName" name="categoryName"/>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="submit" class="btn btn-success">
+        <fa-layers [fixedWidth]="true">
+          <fa-icon [icon]="faTags"></fa-icon>
+          <fa-icon [icon]="faPencil" class="text-body" transform="shrink-4 down-6 right-6"></fa-icon>
+        </fa-layers>
+        Editar categoría
+      </button>
+      <button type="button" class="btn btn-danger" (click)="dismissModal()">
+        <fa-icon [icon]="faTimes"></fa-icon> Cancelar
+      </button>
+    </div>
+  </form>
+</section>
+

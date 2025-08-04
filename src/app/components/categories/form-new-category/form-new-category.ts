@@ -42,6 +42,7 @@ export class FormNewCategory implements OnInit {
     newCategory.name = this.newCategoryForm.value['categoryName'];
 
     this.categoryService.createNewCategory(newCategory).then((resolve) => {
+      this.toastr.success("Nueva categoría creada exitosamente");
       this.closeModal();
     }).catch((reject) => {
       this.toastr.error("Hubo un error al intentar crear la nueva categoría");

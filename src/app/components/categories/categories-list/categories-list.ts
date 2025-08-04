@@ -4,8 +4,9 @@ import {IconDefinition} from '@fortawesome/angular-fontawesome';
 import {CategoryService} from '../../../services/category-service';
 import {Category} from '../../../classes/category';
 import {ToastrService} from 'ngx-toastr';
-import {NgbModal, NgbTooltipConfig} from '@ng-bootstrap/ng-bootstrap';
+import {NgbModal, NgbModalRef, NgbTooltipConfig} from '@ng-bootstrap/ng-bootstrap';
 import {FormNewCategory} from '../form-new-category/form-new-category';
+import {FormEditCategory} from '../form-edit-category/form-edit-category';
 
 @Component({
   selector: 'app-categories-list',
@@ -60,10 +61,30 @@ export class CategoriesList implements OnInit {
       backdrop: 'static',
       centered: true
     }).result.then((resolve) => {
-      this.toastr.success('Categoría creada exitosamente');
+      // Crear nueva categorías
       this.getCategories();
     }).catch((reject) => {
-      this.toastr.error('reject');
+      // Cancelar
+    });
+  }
+
+  public openEditCategoryModal(category: Category): void {
+    const editCategoryModal: NgbModalRef = this.modal.open(FormEditCategory, {
+      size: 'lg',
+      backdrop: 'static',
+      centered: true
+    });
+
+    editCategoryModal.componentInstance.categoryId = category.id;
+    editCategoryModal.componentInstance.categoryName = category.name;
+
+    editCategoryModal.result.then((resolve) => {
+      // Editar categoría
+      this.toastr.error('Categoría editada exitosamente');
+      this.getCategories();
+    }).catch((reject) => {
+      // Cancelar
+      // this.toastr.error('Hubo un error al intentar editar la categoría');
     });
   }
 

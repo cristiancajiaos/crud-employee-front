@@ -22,6 +22,7 @@ import { Header } from './components/shared/header/header';
 import { CategoriesList } from './components/categories/categories-list/categories-list';
 import { Navbar } from './components/shared/navbar/navbar';
 import { FormNewCategory } from './components/categories/form-new-category/form-new-category';
+import { FormEditCategory } from './components/categories/form-edit-category/form-edit-category';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { FormNewCategory } from './components/categories/form-new-category/form-
     CategoriesList,
     Navbar,
     FormNewCategory,
+    FormEditCategory,
   ],
   imports: [
     BrowserModule,
