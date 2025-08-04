@@ -4,6 +4,8 @@ import {IconDefinition} from '@fortawesome/angular-fontawesome';
 import {CategoryService} from '../../../services/category-service';
 import {Category} from '../../../classes/category';
 import {ToastrService} from 'ngx-toastr';
+import {NgbModal, NgbTooltipConfig} from '@ng-bootstrap/ng-bootstrap';
+import {FormNewCategory} from '../form-new-category/form-new-category';
 
 @Component({
   selector: 'app-categories-list',
@@ -29,8 +31,11 @@ export class CategoriesList implements OnInit {
 
   constructor(
     private categoryService: CategoryService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private modal: NgbModal,
+    private tooltipConfig: NgbTooltipConfig
   ) {
+    tooltipConfig.container = "body";
   }
 
   ngOnInit(): void {
@@ -46,6 +51,18 @@ export class CategoriesList implements OnInit {
       this.toastr.error("Hubo un error al obtener las categorías");
     }).finally(() => {
       this.loadingCategories = false;
+    });
+  }
+
+  public openNewCategoryModal(): void {
+    this.modal.open(FormNewCategory, {
+      size: 'lg',
+      backdrop: 'static',
+      centered: true
+    }).result.then((resolve) => {
+      this.toastr.success('resolve');
+    }).catch((reject) => {
+      this.toastr.error('reject');
     });
   }
 

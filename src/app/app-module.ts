@@ -21,6 +21,7 @@ import { Footer } from './components/shared/footer/footer';
 import { Header } from './components/shared/header/header';
 import { CategoriesList } from './components/categories/categories-list/categories-list';
 import { Navbar } from './components/shared/navbar/navbar';
+import { FormNewCategory } from './components/categories/form-new-category/form-new-category';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { Navbar } from './components/shared/navbar/navbar';
     Header,
     CategoriesList,
     Navbar,
+    FormNewCategory,
   ],
   imports: [
     BrowserModule,
