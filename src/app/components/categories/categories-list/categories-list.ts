@@ -83,7 +83,21 @@ export class CategoriesList implements OnInit {
       this.getCategories();
     }).catch((reject) => {
       // Cancelar
-      // this.toastr.error('Hubo un error al intentar editar la categoría');
+    });
+  }
+
+  public openConfirmDeleteCategoryModal(categoryId: number, content: any): void {
+    this.modal.open(content, {
+      size: 'lg',
+      centered: true
+    }).result.then((resolve) => {
+      this.categoryService.deleteCategory(categoryId).then((resolve) => {
+        this.toastr.success("Categoría eliminada exitosamente");
+        this.getCategories();
+      }).catch((reject) => {
+        this.toastr.error("Hubo un error al intentar eliminar la categoría");
+      });
+    }).catch((reject) => {
     });
   }
 

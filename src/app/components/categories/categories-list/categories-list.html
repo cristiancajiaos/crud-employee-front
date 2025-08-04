@@ -50,7 +50,8 @@
                       <fa-icon [icon]="faPencil" [fixedWidth]="true"></fa-icon>
                     </button>
                     <button type="button" class="btn btn-sm btn-outline-danger"
-                            ngbTooltip="Eliminar categoría">
+                            ngbTooltip="Eliminar categoría"
+                            (click)="openConfirmDeleteCategoryModal(category.id, confirmDeleteCategoryModal)">
                       <fa-icon [icon]="faTimes" [fixedWidth]="true"></fa-icon>
                     </button>
                   </div>
@@ -63,5 +64,28 @@
       </ng-container>
     </section>
   </section>
+
+  <ng-template let-modal #confirmDeleteCategoryModal>
+    <section class="confirm-delete-category-modal">
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">
+          ¿Confirma eliminar la categoría?
+        </h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('')">
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Esta acción es <strong>irreversible</strong>. ¿Está seguro que desea continuar?</p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-success" (click)="modal.close('')">
+          <fa-icon [icon]="faCheck"></fa-icon> Si
+        </button>
+        <button class="btn btn-danger" (click)="modal.dismiss('')">
+          <fa-icon [icon]="faTimes"></fa-icon> No
+        </button>
+      </div>
+    </section>
+  </ng-template>
 </section>
 

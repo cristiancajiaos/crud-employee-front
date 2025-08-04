@@ -34,5 +34,9 @@ export class CategoryService {
     }));
   }
 
+  public deleteCategory(categoryId: number): Promise<Category> {
+    return lastValueFrom(this.http.delete<Category>(`${this.baseUrl}/categories/${categoryId}`));
+  }
+
 
 }
