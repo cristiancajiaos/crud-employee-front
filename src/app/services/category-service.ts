@@ -19,10 +19,20 @@ export class CategoryService {
   }
 
   public createNewCategory(category: Category): Promise<Category> {
-    return lastValueFrom((this.http.post<Category>(`${this.baseUrl}/categories`, category, {
+    return lastValueFrom(this.http.post<Category>(`${this.baseUrl}/categories`, category, {
       headers: {
         "Content-Type": "application/json"
       }
-    })));
+    }));
   }
+
+  public editCategory(categoryId: number, category: Category): Promise<Category> {
+    return lastValueFrom(this.http.put<Category>(`${this.baseUrl}/categories/${categoryId}`, category, {
+      headers: {
+        "Content-Type": "application/json"
+      }
+    }));
+  }
+
+
 }

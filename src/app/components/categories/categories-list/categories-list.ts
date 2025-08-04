@@ -61,7 +61,7 @@ export class CategoriesList implements OnInit {
       backdrop: 'static',
       centered: true
     }).result.then((resolve) => {
-      // Crear nueva categorías
+      // Crear nueva categoría
       this.getCategories();
     }).catch((reject) => {
       // Cancelar

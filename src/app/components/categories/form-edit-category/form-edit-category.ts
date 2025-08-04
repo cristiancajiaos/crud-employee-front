@@ -47,12 +47,14 @@ export class FormEditCategory implements OnInit {
 
   public editCategory(): void {
     const editedCategory = new Category();
-    editedCategory.id = this.categoryId;
-    editedCategory.name = this.categoryName;
+    editedCategory.name = this.editCategoryForm.value['categoryName'];
 
-    // this.toastr.success("Categoría editada exitosamente");
-    this.toastr.success(editedCategory.toString());
-    this.closeModal();
+    this.categoryService.editCategory(this.categoryId, editedCategory).then((resolve) => {
+      this.toastr.success("Categoría editada exitosamente");
+      this.closeModal();
+    }).catch((reject) => {
+      this.toastr.error("Hubo un error al intentar editar la categoría");
+    });
   }
 
   public closeModal(): void {

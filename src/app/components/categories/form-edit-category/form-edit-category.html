@@ -8,17 +8,20 @@
       </button>
     </div>
     <div class="modal-body">
-      <p>ID: {{categoryId}}</p>
-      <p>Name: {{categoryName}}</p>
-      <hr/>
       <div class="from-group">
         <label for="categoryName">Nombre de la categoría</label>
         <input type="text" class="form-control" id="categoryName"
-               name="categoryName" formControlName="categoryName" />
+               name="categoryName" formControlName="categoryName"
+               [ngClass]="{'border-danger':!editCategoryForm.controls['categoryName'].untouched && editCategoryForm.controls['categoryName'].errors?.['required']}"/>
+        <ng-container *ngIf="!editCategoryForm.controls['categoryName'].untouched && editCategoryForm.controls['categoryName'].invalid">
+          <ng-container *ngIf="editCategoryForm.controls['categoryName'].errors?.['required']">
+            <small class="text-danger">Se requiere este campo</small>
+          </ng-container>
+        </ng-container>
       </div>
     </div>
     <div class="modal-footer">
-      <button type="submit" class="btn btn-success">
+      <button type="submit" class="btn btn-success" [disabled]="editCategoryForm.invalid">
         <fa-layers [fixedWidth]="true">
           <fa-icon [icon]="faTags"></fa-icon>
           <fa-icon [icon]="faPencil" class="text-body" transform="shrink-4 down-6 right-6"></fa-icon>
