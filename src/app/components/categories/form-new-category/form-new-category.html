@@ -10,11 +10,18 @@
     <div class="modal-body">
       <div class="form-group">
         <label for="categoryName">Nombre de la categoría</label>
-        <input type="text" class="form-control" id="categoryName" name="categoryName"/>
+        <input type="text" class="form-control" id="categoryName"
+               name="categoryName" formControlName="categoryName"
+               [ngClass]="{'border-danger':!newCategoryForm.controls['categoryName'].untouched && newCategoryForm.controls['categoryName'].errors?.['required']}"/>
+        <ng-container *ngIf="!newCategoryForm.controls['categoryName'].untouched && newCategoryForm.controls['categoryName'].invalid">
+          <ng-container *ngIf="newCategoryForm.controls['categoryName'].errors?.['required']">
+            <small class="text-danger">Se requiere este campo</small>
+          </ng-container>
+        </ng-container>
       </div>
     </div>
     <div class="modal-footer">
-      <button type="submit" class="btn btn-success">
+      <button type="submit" class="btn btn-success" [disabled]="newCategoryForm.invalid">
         <fa-layers [fixedWidth]="true">
           <fa-icon [icon]="faTags"></fa-icon>
           <fa-icon [icon]="faAdd" class="text-body" transform="shrink-4 down-6 right-6"></fa-icon>

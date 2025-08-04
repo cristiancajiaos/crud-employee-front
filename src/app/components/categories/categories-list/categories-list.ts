@@ -60,7 +60,8 @@ export class CategoriesList implements OnInit {
       backdrop: 'static',
       centered: true
     }).result.then((resolve) => {
-      this.toastr.success('resolve');
+      this.toastr.success('Categoría creada exitosamente');
+      this.getCategories();
     }).catch((reject) => {
       this.toastr.error('reject');
     });

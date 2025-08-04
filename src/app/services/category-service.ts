@@ -17,4 +17,12 @@ export class CategoryService {
   public getAllCategories(): Promise<Category[]> {
     return lastValueFrom(this.http.get<Category[]>(`${this.baseUrl}/categories`));
   }
+
+  public createNewCategory(category: Category): Promise<Category> {
+    return lastValueFrom((this.http.post<Category>(`${this.baseUrl}/categories`, category, {
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })));
+  }
 }
