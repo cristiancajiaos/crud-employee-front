@@ -50,9 +50,10 @@ export class EmployeesList implements OnInit  {
     this.employeeService.getEmployees().then((employees) => {
       this.employees = employees;
       this.sortEmployeesById();
-      this.loadingEmployees = false;
     }).catch((reject) => {
       this.toastr.error("Hubo un error al obtener los empleados");
+    }).finally(() => {
+      this.loadingEmployees = false;
     });
   }
 
