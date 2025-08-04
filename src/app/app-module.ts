@@ -24,6 +24,7 @@ import { Navbar } from './components/shared/navbar/navbar';
 import { FormNewCategory } from './components/categories/form-new-category/form-new-category';
 import { FormEditCategory } from './components/categories/form-edit-category/form-edit-category';
 import { FocusMe } from './directives/focus-me';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { FocusMe } from './directives/focus-me';
     ToastrModule.forRoot(),
     FormsModule,
     ReactiveFormsModule,
-    RouterModule
+    RouterModule,
+    NgxPaginationModule
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),

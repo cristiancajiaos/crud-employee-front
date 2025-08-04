@@ -12,8 +12,8 @@
         <div class="col-12 col-lg-6">
           <div class="form-group mb-3">
             <label for="employeeFullName">Nombre completo del empleado</label>
-            <input type="text" class="form-control"
-                   id="employeeFullName" name="employeeFullName" formControlName="fullName" />
+            <input type="text" class="form-control" id="employeeFullName"
+                   name="employeeFullName" formControlName="fullName" appFocusMe />
             <ng-container *ngIf="newEmployeeForm.controls['fullName'].invalid">
               <ng-container *ngIf="!(newEmployeeForm.controls['fullName'].untouched) && newEmployeeForm.controls['fullName'].errors?.['required']">
                 <small class="text-danger">Se requiere este campo</small>
