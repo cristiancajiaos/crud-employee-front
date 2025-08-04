@@ -19,6 +19,8 @@ export class FormNewCategory implements OnInit {
   public faAdd: IconDefinition = faAdd;
   public faTimes: IconDefinition = faTimes;
 
+  public foo!: FormControl;
+
   public newCategoryForm!: FormGroup;
 
   constructor(
@@ -31,6 +33,8 @@ export class FormNewCategory implements OnInit {
   }
 
   ngOnInit() {
+    this.foo = new FormControl('', [Validators.required]);
+
     this.newCategoryForm = this.fb.group({
       categoryName: new FormControl('', [Validators.required])
     });

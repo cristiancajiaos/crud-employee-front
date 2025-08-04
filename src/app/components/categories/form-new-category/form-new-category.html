@@ -11,7 +11,7 @@
       <div class="form-group">
         <label for="categoryName">Nombre de la categoría</label>
         <input type="text" class="form-control" id="categoryName"
-               name="categoryName" formControlName="categoryName"
+               name="categoryName" formControlName="categoryName" appFocusMe
                [ngClass]="{'border-danger':!newCategoryForm.controls['categoryName'].untouched && newCategoryForm.controls['categoryName'].errors?.['required']}"/>
         <ng-container *ngIf="!newCategoryForm.controls['categoryName'].untouched && newCategoryForm.controls['categoryName'].invalid">
           <ng-container *ngIf="newCategoryForm.controls['categoryName'].errors?.['required']">
