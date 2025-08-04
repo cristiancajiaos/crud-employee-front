@@ -27,6 +27,9 @@ export class CategoriesList implements OnInit {
   public faList: IconDefinition = faList;
   public faTags: IconDefinition = faTags;
 
+  public pageNumber: number = 1;
+  public pageItems: number = 10;
+
   public loadingCategories: boolean = false;
   public categories: Category[] = [];
 
