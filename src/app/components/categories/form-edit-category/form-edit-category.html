@@ -1,5 +1,5 @@
 <section class="form-edit-category">
-  <form>
+  <form [formGroup]="editCategoryForm" (ngSubmit)="editCategory()">
     <div class="modal-header">
       <h4 class="modal-title" id="modal-basic-title">
         Editar categoría
@@ -13,7 +13,8 @@
       <hr/>
       <div class="from-group">
         <label for="categoryName">Nombre de la categoría</label>
-        <input type="text" class="form-control" id="categoryName" name="categoryName"/>
+        <input type="text" class="form-control" id="categoryName"
+               name="categoryName" formControlName="categoryName" />
       </div>
     </div>
     <div class="modal-footer">

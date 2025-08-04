@@ -80,7 +80,6 @@ export class CategoriesList implements OnInit {
 
     editCategoryModal.result.then((resolve) => {
       // Editar categoría
-      this.toastr.error('Categoría editada exitosamente');
       this.getCategories();
     }).catch((reject) => {
       // Cancelar
